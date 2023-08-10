@@ -1,10 +1,220 @@
-<html>
- 
-<body>
-  <h1>YOUR NAME</h1>
-  <p>Welcome to my website!</p>
-  <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" />
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>counter</title>
+    <script>
+
+        var c1;
+        var c2;
+
+        var value_1 = 0.93;
+        var value_2 = 1.62;
+
+
+        function inet() {
+            c1 = localStorage.getItem("c1") ? localStorage.getItem("c1") : 0;
+            c2 = localStorage.getItem("c2") ? localStorage.getItem("c2") : 0;
+            console.log(c2);
+            update_b_1();
+            update_b_2();
+            update_sum();
+        }
+
+        function persit() {
+            localStorage.setItem("c1", c1);
+            localStorage.setItem("c2", c2);
+
+        }
+
+        function Button_0_93() {
+            c1++;
+            persit();
+            update_b_1();
+            update_sum();
+        }
+
+        function Button_0_93_minus() {
+            c1--;
+            persit()
+            update_b_1()
+            update_sum()
+        }
+
+        function update_b_1() {
+            document.getElementById("Counter_0_93_button").innerHTML = c1;
+            document.getElementById("Summe_0_93_button").innerHTML = (c1 * value_1).toFixed(2) + " €";
+        }
+
+        function update_b_2() {
+            document.getElementById("Counter_1_62_button").innerHTML = c2;
+            document.getElementById("Summe_1_62_button").innerHTML = (c2 * value_2).toFixed(2) + " €";
+        }
+
+        function update_sum() {
+            document.getElementById("summe_all").innerHTML = ((c1 * value_1) + (c2 * value_2)).toFixed(2) + " €";
+        }
+
+        function Button_1_62() {
+            c2++;
+            persit();
+            update_b_2();
+            update_sum();
+        }
+
+        function Button_1_62_minus() {
+            c2--;
+            persit()
+            update_b_2()
+            update_sum()
+        }
+
+        function reset_button_1() {
+
+            window.localStorage.clear();
+            inet();
+            update_b_1();
+            update_b_2();
+            update_sum();
+
+        }
+
+
+    </script>
+    <style>
+        body {
+            background-image: url("bild.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .div_box {
+            background-color: rgba(0, 0, 255, 0.26);
+            color: rgba(255, 255, 255, 0.822);
+            width: 400px;
+            height: 450px;
+            border: 5px solid black;
+            box-shadow: black 5px 5px 5px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-left: 300px;
+            margin-top: 100px;
+        }
+
+        .margin {
+
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 60px;
+            text-shadow: rgb(230, 9, 57) 0px 0px 20px;
+        }
+
+        .button {
+            width: 200px;
+            height: 150px;
+            color: white;
+            transition: background-color 2s;
+            margin-left: 100px;
+            font-size: 50px;
+            background-color: rgba(236, 163, 5, 0.705);
+            border: 5px blue solid;
+            text-shadow: rgb(230, 9, 57) 0px 0px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .button_2 {
+            width: 80px;
+            height: 80px;
+            color: white;
+            font-size: 20px;
+            transition: background-color 2s;
+            background-color: rgba(236, 163, 5, 0.705);
+            border: 5px blue solid;
+            text-shadow: rgb(230, 9, 57) 0px 0px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: rgba(2, 212, 114, 0.445);
+        }
+
+        .button_2:hover {
+            background-color: rgba(2, 212, 114, 0.445);
+
+        }
+
+        #reset_button {
+            margin-right: 500px;
+        }
+
+        .all_summe_box {
+            height: 100px;
+            width: 150px;
+            color: rgba(255, 255, 255, 0.822);
+            background-color: rgba(0, 0, 255, 0.432);
+            text-shadow: rgb(230, 9, 57) 0px 0px 10px;
+            border: 5px solid black;
+            box-shadow: black 5px 5px 5px;
+            border-radius: 10px;
+            text-align: center;
+            display: inline-block;
+            margin-left: 200px;
+        }
+
+        .reset_button_styel {
+            width: 100px;
+            height: 100px;
+            color: rgba(255, 255, 255, 0.822);
+            text-shadow: rgb(230, 9, 57) 0px 0px 10px;
+            transition: background-color 2s;
+            font-size: 30px;
+            background-color: rgba(0, 0, 255, 0.26);
+            border: 5px solid black;
+            border-radius: 10px;
+        }
+
+        .reset_button_styel:hover {
+            background-color: rgba(60, 60, 192, 0.753);
+
+        }
+    </style>
+</head>
+
+<body onload="inet()">
+    <button class="reset_button_styel" type="reset" name="reaet_button" id="reset_button"
+        onclick="reset_button_1()">reset</button>
+
+    <div class="all_summe_box">
+        <h1 id="summe_all">0€</h1>
+    </div>
+
+
+    <div class="div_box">
+        <h1 id="Counter_0_93_button" class="margin">0</h1>
+        <h2 id="Summe_0_93_button" class="margin">
+            0 €
+        </h2>
+        <button type="button" name="B_0.93" id="Button_0.93" class="button" onclick="Button_0_93()">0,93</button>
+        <button type="button" name="b_0.93-" id="Button_0.93-" onclick="Button_0_93_minus()" class="button_2">0.93
+            -</button>
+    </div>
+
+    <div class="div_box">
+        <h1 id="Counter_1_62_button" class="margin">0</h1>
+        <h2 id="Summe_1_62_button" class="margin">0 €</h2>
+        <button type="button" name="B_1.62" id="Button_1.62" onclick="Button_1_62()" class="button">1,62</button>
+        <button type="button" name="B_1.62-" id="Button_1.62-" onclick="Button_1_62_minus()" class="button_2">1,62
+            -</button>
+
+    </div>
+
+
+
 </body>
- 
+
 </html>
- 
